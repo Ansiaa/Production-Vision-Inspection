@@ -1,0 +1,14 @@
+{
+  "pcb4": {
+    "threshold": 0.0750242769,
+    "reason": "thresholds_final_operating.json",
+    "variant": "clahe_median3",
+    "model_dir": "artifacts/runs/extension_filters/pcb4/clahe_median3/train"
+  },
+  "cashew": {
+    "threshold": 0.0498208888,
+    "reason": "thresholds_final_operating.json",
+    "variant": "roi_median5",
+    "model_dir": "artifacts/runs/extension_filters_round3/cashew/roi_median5/train"
+  }
+}
