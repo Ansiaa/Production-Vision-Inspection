@@ -1,0 +1,6 @@
+rank,relative_path,score,heatmap_path,overlay_path
+1,anomaly\images\045.jpg,0.0468187928199768,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\heatmaps\anomaly__images__045.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\overlays\anomaly__images__045.jpg.png
+2,anomaly\images\091.jpg,0.0473195947706699,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\heatmaps\anomaly__images__091.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\overlays\anomaly__images__091.jpg.png
+3,anomaly\images\027.jpg,0.0474192164838314,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\heatmaps\anomaly__images__027.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\overlays\anomaly__images__027.jpg.png
+4,anomaly\images\059.jpg,0.0483240894973278,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\heatmaps\anomaly__images__059.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\overlays\anomaly__images__059.jpg.png
+5,anomaly\images\092.jpg,0.0508496314287185,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\heatmaps\anomaly__images__092.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\roi_only\infer\overlays\anomaly__images__092.jpg.png

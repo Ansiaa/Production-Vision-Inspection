@@ -1,0 +1,6 @@
+rank,relative_path,score,heatmap_path,overlay_path
+1,normal\images\0508.jpg,0.092145524919033,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\heatmaps\normal__images__0508.jpg.png,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\overlays\normal__images__0508.jpg.png
+2,normal\images\0083.jpg,0.0884766951203346,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\heatmaps\normal__images__0083.jpg.png,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\overlays\normal__images__0083.jpg.png
+3,normal\images\0867.jpg,0.0876685380935669,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\heatmaps\normal__images__0867.jpg.png,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\overlays\normal__images__0867.jpg.png
+4,normal\images\0423.jpg,0.0861178934574127,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\heatmaps\normal__images__0423.jpg.png,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\overlays\normal__images__0423.jpg.png
+5,normal\images\0333.jpg,0.0859506726264953,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\heatmaps\normal__images__0333.jpg.png,D:\project1\artifacts\runs\preproc_compare\pcb4\clahe\infer\overlays\normal__images__0333.jpg.png

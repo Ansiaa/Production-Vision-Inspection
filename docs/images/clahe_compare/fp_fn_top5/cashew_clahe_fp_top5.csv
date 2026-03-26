@@ -1,0 +1,6 @@
+rank,relative_path,score,heatmap_path,overlay_path
+1,normal\images\361.jpg,0.0833091586828231,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\heatmaps\normal__images__361.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\overlays\normal__images__361.jpg.png
+2,normal\images\440.jpg,0.0793138071894645,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\heatmaps\normal__images__440.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\overlays\normal__images__440.jpg.png
+3,normal\images\035.jpg,0.0777943357825279,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\heatmaps\normal__images__035.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\overlays\normal__images__035.jpg.png
+4,normal\images\016.jpg,0.0725690498948097,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\heatmaps\normal__images__016.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\overlays\normal__images__016.jpg.png
+5,normal\images\185.jpg,0.0711958929896354,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\heatmaps\normal__images__185.jpg.png,D:\project1\artifacts\runs\preproc_compare\cashew\clahe\infer\overlays\normal__images__185.jpg.png

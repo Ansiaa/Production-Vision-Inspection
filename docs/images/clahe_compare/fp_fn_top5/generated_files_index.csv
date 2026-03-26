@@ -1,0 +1,5 @@
+name,hist_path,fp_top5,fn_top5
+pcb4_roi_only,/mnt/data/hist_top5_outputs/pcb4_roi_only_score_hist.png,/mnt/data/hist_top5_outputs/pcb4_roi_only_fp_top5.csv,/mnt/data/hist_top5_outputs/pcb4_roi_only_fn_top5.csv
+pcb4_clahe,/mnt/data/hist_top5_outputs/pcb4_clahe_score_hist.png,/mnt/data/hist_top5_outputs/pcb4_clahe_fp_top5.csv,/mnt/data/hist_top5_outputs/pcb4_clahe_fn_top5.csv
+cashew_roi_only,/mnt/data/hist_top5_outputs/cashew_roi_only_score_hist.png,/mnt/data/hist_top5_outputs/cashew_roi_only_fp_top5.csv,/mnt/data/hist_top5_outputs/cashew_roi_only_fn_top5.csv
+cashew_clahe,/mnt/data/hist_top5_outputs/cashew_clahe_score_hist.png,/mnt/data/hist_top5_outputs/cashew_clahe_fp_top5.csv,/mnt/data/hist_top5_outputs/cashew_clahe_fn_top5.csv
