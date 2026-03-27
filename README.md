@@ -537,3 +537,359 @@ This project separates the threshold policy into two stages:
 
 This separation reflects a more realistic industrial setup: the model is evaluated fairly during comparison, but deployed conservatively during operation.
 
+---
+
+## 13. Operating FP/FN Gallery
+
+To make the final operating threshold more interpretable, representative false-positive and false-negative cases were curated for the final operating versions.
+
+### 13-1. Representative Operating Cases
+
+#### pcb4 — Representative False Positive
+
+| Input | Overlay | Heatmap |
+| --- | --- | --- |
+| ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fp_input.jpg) | ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fp_overlay.png) | ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fp_heatmap.png) |
+
+#### pcb4 — Representative False Negative
+
+| Input | Overlay | Heatmap |
+| --- | --- | --- |
+| ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fn_input.jpg) | ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fn_overlay.png) | ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fn_heatmap.png) |
+
+#### cashew — Representative False Positive
+
+| Input | Overlay | Heatmap |
+| --- | --- | --- |
+| ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fp_input.jpg) | ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fp_overlay.png) | ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fp_heatmap.png) |
+
+#### cashew — Representative False Negative
+
+| Input | Overlay | Heatmap |
+| --- | --- | --- |
+| ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fn_input.jpg) | ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fn_overlay.png) | ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fn_heatmap.png) |
+
+### 13-2. Top-5 Failure Gallery
+
+- `docs/images/operating_threshold/fp_fn_top5/pcb4_clahe_recall_090_fp_top5.csv`
+- `docs/images/operating_threshold/fp_fn_top5/pcb4_clahe_recall_090_fn_top5.csv`
+- `docs/images/operating_threshold/fp_fn_top5/cashew_roi_only_recall_095_fp_top5.csv`
+- `docs/images/operating_threshold/fp_fn_top5/cashew_roi_only_recall_095_fn_top5.csv`
+
+### 13-3. Operational Meaning
+
+This gallery was used to verify whether the selected operating threshold behaved in a way that was acceptable for practical inspection review.
+
+---
+
+## 13. Operating FP/FN Gallery
+
+To make the final operating threshold more interpretable, representative false-positive and false-negative cases were curated for the final operating versions.
+
+### 13-1. Representative Operating Cases
+
+#### pcb4 — Representative False Positive
+
+| Input | Overlay | Heatmap |
+| --- | --- | --- |
+| ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fp_input.jpg) | ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fp_overlay.png) | ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fp_heatmap.png) |
+
+#### pcb4 — Representative False Negative
+
+| Input | Overlay | Heatmap |
+| --- | --- | --- |
+| ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fn_input.jpg) | ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fn_overlay.png) | ![](docs/images/operating_threshold/representative/pcb4_clahe_recall_090_representative_fn_heatmap.png) |
+
+#### cashew — Representative False Positive
+
+| Input | Overlay | Heatmap |
+| --- | --- | --- |
+| ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fp_input.jpg) | ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fp_overlay.png) | ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fp_heatmap.png) |
+
+#### cashew — Representative False Negative
+
+| Input | Overlay | Heatmap |
+| --- | --- | --- |
+| ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fn_input.jpg) | ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fn_overlay.png) | ![](docs/images/operating_threshold/representative/cashew_roi_only_recall_095_representative_fn_heatmap.png) |
+
+### 13-2. Top-5 Failure Gallery
+
+- `docs/operating_threshold/fp_fn_top5/pcb4_clahe_recall_090_fp_top5.csv`
+- `docs/operating_threshold/fp_fn_top5/pcb4_clahe_recall_090_fn_top5.csv`
+- `docs/operating_threshold/fp_fn_top5/cashew_roi_only_recall_095_fp_top5.csv`
+- `docs/operating_threshold/fp_fn_top5/cashew_roi_only_recall_095_fn_top5.csv`
+
+### 13-3. Operational Meaning
+
+This gallery was used to verify whether the selected operating threshold behaved in a way that was acceptable for practical inspection review.
+
+---
+
+## 14. Drift Monitoring and Retrain Trigger
+
+### 14-1. Why This Step Was Needed
+
+After fixing the final operating candidates and thresholds, the next issue was no longer only validation performance. The system also needed a way to monitor whether newly incoming batches were drifting away from the established operating baseline.
+
+For that reason, a lightweight drift monitoring module and a retrain-trigger skeleton were added.
+
+### 14-2. Final Reference
+
+The final references were regenerated using the final operating combinations:
+
+- `pcb4 final reference`: `CLAHE + Median3`, threshold `0.0750242769`
+- `cashew final reference`: `ROI-only + Median5`, threshold `0.0498208888`
+
+Each reference stores:
+
+- anomaly score mean / std / p95 / p99
+- predicted anomaly ratio
+- gray mean / gray std
+- gradient mean / gradient std
+- valid image count
+
+### 14-3. Final Reference Summary
+
+| Category | Reference JSON | n_samples | score_mean | score_p95 | predicted_anomaly_ratio |
+| --- | --- | ---: | ---: | ---: | ---: |
+| pcb4 | `artifacts/monitoring/reference/pcb4_final_reference.json` | 1105 | 0.06403 | 0.08514 | 0.13846 |
+| cashew | `artifacts/monitoring/reference/cashew_final_reference.json` | 600 | 0.04616 | 0.06908 | 0.23833 |
+
+### 14-4. Drift Monitoring Signals
+
+When a new batch arrives, the following signals are compared against the reference:
+
+1. **score distribution**
+   - mean
+   - std
+   - p95
+   - p99
+
+2. **input image statistics**
+   - gray mean
+   - gray std
+   - gradient mean
+   - gradient std
+
+3. **prediction ratio**
+   - predicted anomaly ratio
+
+### 14-5. Drift Level
+
+Drift is divided into three levels:
+
+- `weak`
+- `moderate`
+- `severe`
+
+### 14-6. Mock Batch Drift Validation
+
+Two validation batches were tested:
+
+- **weak drift batch**: samples close to the existing operating distribution
+- **synthetic drift batch**: batches with artificial brightness / contrast / blur shifts
+
+| Batch | Drift Level | Status |
+| --- | --- | --- |
+| `pcb4_batch_weak` | `weak` | `keep_monitoring` |
+| `cashew_batch_weak` | `weak` | `keep_monitoring` |
+| `pcb4_batch_moderate` | `severe` | `retrain_recommended` |
+| `cashew_batch_moderate` | `severe` | `retrain_recommended` |
+
+### 14-7. Operational Meaning
+
+The purpose of this module is not to retrain immediately for every change.
+
+Its purpose is to:
+
+- detect input distribution changes early
+- record score distribution shifts
+- provide a practical basis for retraining decisions
+
+---
+
+## 15. FastAPI + MFC Inference Endpoint
+
+### 15-1. Why the API Was Added
+
+After organizing the final operating candidates and the monitoring / retrain flow, the project was extended with a FastAPI inference endpoint for a more service-like demo.
+
+This endpoint processes a raw full image in the following order:
+
+1. save the uploaded image
+2. extract the category-specific ROI
+3. apply the final category-specific operating preprocessing
+   - `pcb4`: `CLAHE + Median3`
+   - `cashew`: `ROI-only + Median5`
+4. generate anomaly score / overlay / heatmap
+5. return the final threshold-based decision
+6. resolve `gt_label` and compute `is_correct`
+
+It also includes an MFC-connected Windows inference client demo.
+
+### 15-2. Final API Operating Configuration
+
+| Category | Final API Variant | Threshold |
+| --- | --- | ---: |
+| pcb4 | CLAHE + Median3 | 0.0750242769 |
+| cashew | ROI-only + Median5 | 0.0498208888 |
+
+### 15-3. Request Contract
+
+`/v1/inspect` accepts the following inputs:
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `cls` | Query | Yes | `pcb4` or `cashew` |
+| `file` | Multipart File | Yes | raw image to inspect |
+| `gt_label` | Multipart Form | No | `OK` / `NG` / `UNKNOWN` |
+| `source_path` | Multipart Form | No | full source file path |
+
+Recommended usage:
+
+- if the MFC client already knows the source label, directly sending `gt_label` as `OK` or `NG` is the simplest and most stable option
+- if `gt_label` is not provided, `source_path` can be sent to support automatic label resolution
+- if neither is provided, the server attempts to infer `gt_label` from the uploaded file name and the VisA folder structure
+
+### 15-4. Ground Truth Resolution Priority
+
+The current `gt_label` resolution order is:
+
+1. explicitly provided `gt_label`
+2. `source_path`-based inference
+3. uploaded file name based inference
+4. fallback to `UNKNOWN`
+
+### 15-5. API Response Schema
+
+```json
+{
+  "cls": "cashew",
+  "gt_label": "NG",
+  "pred_label": "NG",
+  "is_correct": true,
+  "pred_score": 0.0604,
+  "decision_thr": 0.0498208888,
+  "decision_reason": "thresholds_final_operating.json",
+  "overlay_path": "D:/project1/artifacts/runs/api/overlay/000_cashew.png",
+  "heatmap_path": "D:/project1/artifacts/runs/api/heatmap/000_cashew.png",
+  "image_path": "D:/project1/artifacts/runs/api/uploads/000.JPG",
+  "processing_ms": 754,
+  "roi_path": "D:/project1/artifacts/runs/api/roi/000_cashew_roi.png",
+  "roi_mask_path": "D:/project1/artifacts/runs/api/roi_mask/000_cashew_roi_mask.png",
+  "preprocessed_path": "D:/project1/artifacts/runs/api/preprocessed/000_cashew_preproc.png"
+}
+```
+The previous `is_anomaly` field was removed.  
+Instead, the response schema was reorganized around `gt_label`, `pred_label`, and `is_correct` so that ground truth, model prediction, and correctness can be checked more directly.
+
+### 15-6. API Processing Artifacts
+
+For a raw full-image request, the API generates the following artifacts internally:
+
+- `artifacts/runs/api/uploads/`
+- `artifacts/runs/api/roi/`
+- `artifacts/runs/api/roi_mask/`
+- `artifacts/runs/api/preprocessed/`
+- `artifacts/runs/api/overlay/`
+- `artifacts/runs/api/heatmap/`
+
+In other words, the endpoint does not return only a score.  
+It preserves an operation-oriented inference flow that also saves ROI extraction results, preprocessed images, overlays, and heatmaps.
+
+### 15-7. Test Examples
+
+#### Minimal Test
+
+```powershell
+curl.exe -X POST "http://127.0.0.1:8000/v1/inspect?cls=cashew" `
+  -F "file=@D:\project1\data\VisA\cashew\Data\Images\Anomaly\000.JPG"
+```
+
+#### Explicit `gt_label` Test
+
+```powershell
+curl.exe -X POST "http://127.0.0.1:8000/v1/inspect?cls=cashew" `
+  -F "file=@D:\project1\data\VisA\cashew\Data\Images\Anomaly\000.JPG" `
+  -F "gt_label=NG"
+```
+
+#### `source_path` Assisted Test
+
+```powershell
+curl.exe -X POST "http://127.0.0.1:8000/v1/inspect?cls=pcb4" `
+  -F "file=@D:\project1\data\VisA\pcb4\Data\Images\Normal\001.JPG" `
+  -F "source_path=D:\project1\data\VisA\pcb4\Data\Images\Normal\001.JPG"
+```
+
+### 15-8. MFC Demo Client Result
+
+The MFC demo client was used to validate that the FastAPI endpoint could be integrated into a desktop inspection-style UI.
+
+![](docs/images/mfc_demo/mfc_demo.png)
+
+In the MFC demo flow:
+
+- the user selects the original image
+- chooses `cls` (`pcb4` or `cashew`)
+- sends `gt_label` directly when available
+  - `...\Normal\...` -> `OK`
+  - `...\Anomaly\...` -> `NG`
+- optionally sends `source_path`
+- receives the response JSON
+- displays `pred_label`, `gt_label`, `is_correct`, `overlay_path`, and `heatmap_path` in the UI
+
+From a practical demo perspective, the clearest design was for the MFC client to send `gt_label` directly and let the server calculate `is_correct`.
+
+### 15-9. API Validation Summary
+
+The FastAPI endpoint was validated with raw full-image uploads.
+
+Confirmed behaviors:
+
+- raw image upload works
+- ROI extraction works inside the API
+- final operating-threshold decision works
+- overlay / heatmap / preprocessed image artifacts are saved
+- the JSON response schema based on `gt_label / pred_label / is_correct` is fixed
+- file name based GT inference and MFC linkage were also verified
+
+In other words, the project now includes an inference endpoint that connects:
+
+`raw image -> ROI -> preprocessing -> inference -> JSON response -> MFC display`
+
+---
+
+## 16. Current Status
+
+Completed:
+
+- baseline inference for all four combinations (`pcb4/cashew × ROI-only/CLAHE`)
+- CLAHE comparison and representative case analysis
+- extension filter experiments
+- final operating version selection (`pcb4 = CLAHE + Median3`, `cashew = ROI-only + Median5`)
+- recall-priority threshold sweep
+- final operating-threshold inference
+- operating FP/FN gallery organization
+- final reference generation
+- drift monitoring skeleton
+- retrain trigger skeleton
+- mock batch drift validation
+- FastAPI inference endpoint
+- API response schema cleanup based on `gt_label / pred_label / is_correct`
+- raw full-image validation
+- MFC integration test
+
+---
+
+## 17. Planned Extensions
+
+- VLM-based explanation JSON
+- Docker packaging
+- MLflow / DVC cleanup
+- MFC result screen improvement
+- inference result logging and history view
+
+
+
+
